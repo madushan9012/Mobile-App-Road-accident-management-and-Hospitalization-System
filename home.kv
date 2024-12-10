@@ -1,0 +1,303 @@
+MDScreen:
+    name: "home"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(20)
+        spacing: dp(20)
+
+        # Top Section - Welcome message and Logout Button
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: dp(50)
+
+            # Welcome text
+            MDLabel:
+                id: welcome_label
+                text: "Welcome!"
+                halign: "left"
+                font_style: "H6"  # You can try H5 or H6 to make it smaller
+                theme_text_color: "Custom"  # Allows custom color
+                text_color: 1, 0, 0, 1  # RGBA for red (Red: 1, Green: 0, Blue: 0, Alpha: 1)
+                font_size: "15sp"  # You can set a custom size if needed (e.g., 20sp)
+
+            # Spacer to push the logout icon to the right
+            Widget:
+                size_hint_x: None
+                width: dp(70)  # Adjust this value based on the available space
+
+            # Logout Icon and Text
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: None, None
+                width: dp(50)
+                height: dp(60)
+
+                MDIconButton:
+                    icon: "location-exit"
+                    user_font_size: "20sp"
+                    pos_hint: {"center_x": .5}
+                    on_release: app.logout()  # Call the logout function on button click
+
+                MDLabel:
+                    text: "Logout"
+                    halign: "center"
+                    font_size: "10sp"
+                    theme_text_color: "Secondary"
+
+
+
+        # Complaint Status Section
+        MDCard:
+            orientation: 'vertical'
+            padding: dp(10)
+            size_hint_y: None
+            height: dp(150)
+            md_bg_color: "#F44336"
+            radius: [25, 25, 25, 25]
+            elevation: 10
+
+            MDLabel:
+                text: "Report Status"
+                halign: "center"
+                font_style: "H6"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+
+            BoxLayout:
+                spacing: dp(20)
+                padding: dp(10)
+                MDLabel:
+                    text: "In Action"
+                    halign: "center"
+                    font_style: "H6"
+                    font_size: "12sp"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+
+                MDLabel:
+                    text: "Completed"
+                    halign: "center"
+                    font_style: "H6"
+                    font_size: "12sp"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+
+            BoxLayout:
+                spacing: dp(20)
+                padding: dp(10)
+                MDLabel:
+                    id: accident_count_label
+                    text: "00"
+                    halign: "center"
+                    font_style: "H6"
+                    font_size: "14sp"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+
+                MDLabel:
+                    text: "00"
+                    halign: "center"
+                    font_style: "H6"
+                    font_size: "14sp"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+
+            MDLabel:
+                text: "Let's save a human Life"
+                halign: "center"
+                font_style: "H6"
+                font_size: "12sp"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+
+        # Complaints Section
+        MDLabel:
+            text: "Reportings"
+            font_style: "H6"
+            halign: "left"
+            size_hint_y: None
+            height: dp(30)
+
+        ScrollView:
+            do_scroll_x: True
+            do_scroll_y: False
+
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_x: None
+                width: dp(400)
+                spacing: dp(10)
+
+                MDCard:
+                    size_hint: None, None
+                    size: dp(200), dp(100)
+                    elevation: 5
+                    padding: dp(10)
+                    radius: [15, 15, 15, 15]
+
+                    MDLabel:
+                        text: "532,125 road accidents recorded in malaysia from Jan-oct,2024; fatal crashes,68% involving bikers.."
+                        font_style: "Body1"
+                        font_size: "12sp"
+                        theme_text_color: "Secondary"
+
+                MDCard:
+                    size_hint: None, None
+                    size: dp(200), dp(100)
+                    elevation: 5
+                    padding: dp(10)
+                    radius: [15, 15, 15, 15]
+
+                    MDLabel:
+                        text: "More than 12,000 vehicles inspected on first day of Ops khas Motosikal 2024,including 6756 motorcycles..."
+                        font_style: "Body1"
+                        font_size: "12sp"
+                        theme_text_color: "Secondary"
+
+
+        # Navigation Icons Section
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: dp(80)
+            spacing: dp(12)  # Space between icons
+
+            # Home Button
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: None, None
+                size: dp(50), dp(50)
+                pos_hint: {"center_x": 0.5}
+                canvas.before:
+                    Color:
+                        rgba: (0.8, 0.8, 0.8, 1)
+                    Ellipse:
+                        size: self.size
+                        pos: self.pos
+
+                MDIconButton:
+                    id: home_icon
+                    icon: "home"
+                    user_font_size: "25sp"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    on_release:
+                        app.switch_to_screenHome('home')
+
+
+                MDLabel:
+                    text: "Home"
+                    halign: "center"
+                    font_size: "9sp"
+
+            # Report Accident Button
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: None, None
+                size: dp(50), dp(50)
+                pos_hint: {"center_x": 0.5}
+                canvas.before:
+                    Color:
+                        rgba:(0.8, 0.8, 0.8, 1)
+                    Ellipse:
+                        size: self.size
+                        pos: self.pos
+
+                MDIconButton:
+                    id:report_icon
+                    icon: "ambulance"
+                    user_font_size: "25sp"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    on_release:
+                        app.switch_to_screenHome('report')
+
+
+
+                MDLabel:
+                    text: "Report Accident"
+                    halign: "center"
+                    font_size: "9sp"
+
+            # News Button
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: None, None
+                size: dp(50), dp(50)
+                pos_hint: {"center_x": 0.5}
+                canvas.before:
+                    Color:
+                        rgba:(0.8, 0.8, 0.8, 1)
+                    Ellipse:
+                        size: self.size
+                        pos: self.pos
+
+                MDIconButton:
+                    id:news_icon
+                    icon: "newspaper"
+                    user_font_size: "25sp"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    on_release:
+                        app.switch_to_screenHome('news')
+
+
+                MDLabel:
+                    text: "News"
+                    halign: "center"
+                    font_size: "9sp"
+
+            # Quick guide Button
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: None, None
+                size: dp(50), dp(50)
+                pos_hint: {"center_x": 0.5}
+                canvas.before:
+                    Color:
+                        rgba:(0.8, 0.8, 0.8, 1)
+                    Ellipse:
+                        size: self.size
+                        pos: self.pos
+
+                MDIconButton:
+                    id:quickGuide_icon
+                    icon: "view-grid-outline"
+                    user_font_size: "25sp"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    on_release:
+                        app.switch_to_screenHome('quickGuide')
+
+
+                MDLabel:
+                    text: "Quick guide"
+                    halign: "center"
+                    font_size: "9sp"
+
+            # Account Settings Button
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: None, None
+                size: dp(50), dp(50)
+                pos_hint: {"center_x": 0.5}
+                canvas.before:
+                    Color:
+                        rgba: (0.8, 0.8, 0.8, 1)
+
+                    Ellipse:
+                        size: self.size
+                        pos: self.pos
+
+                MDIconButton:
+                    id:accountDetails_icon
+                    icon: "account-cog"
+                    user_font_size: "25sp"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    on_release:
+                        app.switch_to_screenHome('account-details')
+
+
+
+                MDLabel:
+                    text: "Account"
+                    halign: "center"
+                    font_size: "9sp"

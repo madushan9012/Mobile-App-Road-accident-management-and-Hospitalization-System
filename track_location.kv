@@ -1,0 +1,373 @@
+MDScreen:
+    name: "track_location"
+
+    BoxLayout: #outer box for all items
+        orientation: "vertical"
+        padding: dp(10)
+        spacing: dp(5)
+        # Back Arrow and Title on the Same Row
+
+        BoxLayout: #box to hold arrow and text
+            orientation:"horizontal"
+            size_hint_y:None
+            height: dp(20)
+
+            #Back button(left aligned)
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_y": 0.5}
+                on_release: app.switch_to_screen('report')
+
+            Widget:
+                size_hint_x: None
+                width: dp(10)
+
+            MDLabel:
+                text: "Track Location Screen"
+                halign: "center"
+                font_style: "H5"
+                halign: "left"
+                pos_hint: {"center_y": 0.5}
+                size_hint_y: None
+                height: dp(20)
+
+        Widget:
+            size_hint_x: None
+            width: dp(20)
+
+        BoxLayout: #to hold 4 fields
+            orientation: "vertical" #vertical
+            size_hint_y: None
+            height: dp(200)
+
+            BoxLayout: #to hold accident location text and set button
+                orientation: "horizontal" #vertical
+                size_hint_y: None
+                height: dp(50)
+
+                MDLabel:
+                    text: "Accident Location"
+                    halign: "left"
+                    size_hint_x: 0.4
+                    size_hint_y: None
+                    pos_hint: {"center_y": 0.3}
+                    height: dp(20)
+
+                Widget:
+                    size_hint_x: None
+                    width: dp(5)
+
+                # MDTextField to enter accident location
+                MDTextField:
+                    hint_text: "Get location"
+                    size_hint_x: 0.9  # Adjust width as needed
+                    height: dp(40)
+                    id: accident_location_field # ID for the accident location field
+                    pos_hint: {"center_y": 0.4}  # Center it vertically with respect to the label
+
+                Widget:
+                    size_hint_x: None
+                    width: dp(5)
+
+                MDFillRoundFlatButton:
+                    text: "Get"
+                    size_hint_x: 0.3
+                    pos_hint: {"center_y": 0.3}
+                    radius: [5, 5, 5, 5]
+                    on_release: app.on_get_location()  # Call the location retrieval method
+
+
+
+            BoxLayout: #to hold Latitude
+                orientation: "horizontal" #vertical
+                size_hint_y: None
+                height: dp(50)
+
+                MDLabel:
+                    text: "Latitude"
+                    halign: "left"
+                    size_hint_x: 0.4
+                    size_hint_y: None
+                    pos_hint: {"center_y": 0.3}
+                    height: dp(20)
+
+                # MDTextField to get latitude
+                MDTextField:
+                    hint_text: "Latitude"
+                    size_hint_x: 0.8  # Adjust width as needed
+                    height: dp(40)
+                    id: latitude_field  # Give this text field an ID
+                    pos_hint: {"center_x": 0.1}
+                    pos_hint: {"center_y": 0.4}  # Center it vertically with respect to the label
+
+                Widget:
+                    size_hint_x: None
+                    width: dp(90)
+
+            BoxLayout: #to hold Longitude
+                orientation: "horizontal" #vertical
+                size_hint_y: None
+                height: dp(50)
+
+                MDLabel:
+                    text: "Longitude"
+                    halign: "left"
+                    size_hint_x: 0.4
+                    size_hint_y: None
+                    pos_hint: {"center_y": 0.3}
+                    height: dp(20)
+
+
+                # MDTextField to get longitude
+                MDTextField:
+                    hint_text: "Longitude"
+                    size_hint_x: 0.8  # Adjust width as needed
+                    height: dp(40)
+                    id: longitude_field  # Give this text field an ID
+                    pos_hint: {"center_y": 0.4}  # Center it vertically with respect to the label
+
+                Widget:
+                    size_hint_x: None
+                    width: dp(90)
+
+
+            BoxLayout: #to hold time for mobile gps part
+                orientation: "horizontal" #vertical
+                size_hint_y: None
+                height: dp(50)
+
+                MDLabel:
+                    text: "Time"
+                    halign: "left"
+                    size_hint_x: 0.4
+                    size_hint_y: None
+                    pos_hint: {"center_y": 0.3}
+                    height: dp(20)
+
+                #Widget:
+                    #size_hint_x: None
+                    #width: dp(5)
+
+                # MDTextField to hold time
+                MDTextField:
+                    id: time_fieldM
+                    hint_text: "Set Current Time"
+                    size_hint_x: 0.5  # Adjust width as needed
+                    height: dp(40)
+                    pos_hint: {"center_y": 0.4}  # Center it vertically with respect to the label
+                    readonly: True  # Ensure it's readonly so the user can only select time through the time picker
+                    #on_focus: if self.focus: app.show_time_pickerM()  # Opens time picker when clicked
+
+                Widget:
+                    size_hint_x: None
+                    width: dp(50)
+
+                MDRaisedButton:
+                    text: "Get Time"
+                    size_hint_y: None
+                    height: dp(40)
+                    pos_hint: {"center_x": 0.5}
+                    on_press: app.set_current_time()
+
+                Widget:
+                    size_hint_x: None
+                    width: dp(10)
+
+        BoxLayout: #box to hold for testing text
+            orientation:"horizontal"
+            size_hint_y:None
+            height: dp(40)
+
+            MDLabel:
+                text: "For PC Testing Purposes"
+                halign: "center"
+                size_hint_x: 0.8
+                size_hint_y: None
+                #pos_hint: {"center_y": 0.3}
+                height: dp(20)
+
+        BoxLayout: #to hold 4 fields
+            orientation: "vertical" #vertical
+            size_hint_y: None
+            height: dp(200)
+
+            BoxLayout: #to hold accident location text and set button
+                orientation: "horizontal" #vertical
+                size_hint_y: None
+                height: dp(50)
+
+                MDLabel:
+                    text: "Accident Location"
+                    halign: "left"
+                    size_hint_x: 0.4
+                    size_hint_y: None
+                    pos_hint: {"center_y": 0.3}
+                    height: dp(20)
+
+                Widget:
+                    size_hint_x: None
+                    width: dp(5)
+
+                # MDTextField to enter accident location
+                MDTextField:
+                    hint_text: "Get location"
+                    size_hint_x: 0.9  # Adjust width as needed
+                    height: dp(40)
+                    id: accident_location_field1  # ID for the accident location field
+                    pos_hint: {"center_y": 0.4}  # Center it vertically with respect to the label
+
+                Widget:
+                    size_hint_x: None
+                    width: dp(5)
+
+                MDFillRoundFlatButton:
+                    text: "Get"
+                    size_hint_x: 0.3
+                    pos_hint: {"center_y": 0.3}
+                    radius: [5, 5, 5, 5]
+                    on_release: app.on_get_ip_location()  # Call the IP location retrieval method
+
+            BoxLayout: #to hold Latitude
+                orientation: "horizontal" #vertical
+                size_hint_y: None
+                height: dp(50)
+
+                MDLabel:
+                    text: "Latitude"
+                    halign: "left"
+                    size_hint_x: 0.4
+                    size_hint_y: None
+                    pos_hint: {"center_y": 0.3}
+                    height: dp(20)
+
+                # MDTextField to get latitude
+                MDTextField:
+                    hint_text: "Latitude"
+                    size_hint_x: 0.8  # Adjust width as needed
+                    height: dp(40)
+                    id: latitude_field1  # Give this text field an ID
+                    pos_hint: {"center_x": 0.1}
+                    pos_hint: {"center_y": 0.4}  # Center it vertically with respect to the label
+
+                Widget:
+                    size_hint_x: None
+                    width: dp(90)
+
+            BoxLayout: #to hold Longitude
+                orientation: "horizontal" #vertical
+                size_hint_y: None
+                height: dp(50)
+
+                MDLabel:
+                    text: "Longitude"
+                    halign: "left"
+                    size_hint_x: 0.4
+                    size_hint_y: None
+                    pos_hint: {"center_y": 0.3}
+                    height: dp(20)
+
+
+                # MDTextField to get longitude
+                MDTextField:
+                    hint_text: "Longitude"
+                    size_hint_x: 0.8  # Adjust width as needed
+                    height: dp(40)
+                    id: longitude_field1  # Give this text field an ID
+                    pos_hint: {"center_y": 0.4}  # Center it vertically with respect to the label
+
+                Widget:
+                    size_hint_x: None
+                    width: dp(90)
+
+
+            BoxLayout: #to hold time for testing purposes part
+                orientation: "horizontal" #vertical
+                size_hint_y: None
+                height: dp(50)
+
+                MDLabel:
+                    text: "Time"
+                    halign: "left"
+                    size_hint_x: 0.4
+                    size_hint_y: None
+                    pos_hint: {"center_y": 0.3}
+                    height: dp(20)
+
+                #Widget:
+                    #size_hint_x: None
+                    #width: dp(5)
+
+                # MDTextField to hold time for testing purposes
+                MDTextField:
+                    id: time_fieldT
+                    hint_text: "Set Current Time"
+                    size_hint_x: 0.5  # Adjust width as needed
+                    height: dp(40)
+                    pos_hint: {"center_y": 0.4}  # Center it vertically with respect to the label
+                    readonly: True  # Ensure it's readonly so the user can only select time through the time picker
+                    #on_focus: if self.focus: app.show_time_pickerT()  # Opens time picker when clicked
+
+                Widget:
+                    size_hint_x: None
+                    width: dp(50)
+
+                MDRaisedButton:
+                    text: "Get Time"
+                    size_hint_y: None
+                    height: dp(40)
+                    pos_hint: {"center_x": 0.5}
+                    on_press: app.set_current_time()
+
+
+                Widget:
+                    size_hint_x: None
+                    width: dp(10)
+        Widget:
+            size_hint_x: None
+            width: dp(10)
+
+        BoxLayout: #to hold text details are correct
+            orientation: "horizontal" #vertical
+            size_hint_y: None
+            height: dp(20)
+
+            MDLabel:
+                text: "Press Submit if All Details are Correct!.."
+                halign: "center"
+                size_hint_x: 0.9
+                size_hint_y: None
+                #pos_hint: {"center_y": 0.3}
+                height: dp(20)
+
+        Widget:
+            size_hint_x: None
+            width: dp(40)
+
+        BoxLayout: #to hold button
+            orientation: "horizontal"
+            size_hint_y: None
+            height: dp(40)
+
+            Widget:  # Spacer widget to center the button horizontally
+                size_hint_x: None
+                width: dp(120)
+
+            MDFillRoundFlatButton:
+                text: "Submit"
+                size_hint_x: None  # This is important to center the button
+                width: dp(450)  # Adjust the width of the button
+                pos_hint: {"center_y": 0.5}  # Center the button vertically in the BoxLayout
+                on_release:
+                    app.submit_report()
+                    app.switch_to_screen('near_hospitals')
+                    #app.display_nearest_hospitals_on_map()
+
+
+        Widget:
+            size_hint_x: None
+            width: dp(20)
+
+
+
+
+

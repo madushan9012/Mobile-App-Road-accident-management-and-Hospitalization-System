@@ -1,0 +1,65 @@
+MDScreen:
+    name: "self_picking"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(10)
+        spacing: dp(10)
+
+        # Back Arrow and Title on the Same Row
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: dp(40)
+
+            # Back Button (left aligned)
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_y": 0.5}
+                on_release: app.switch_to_screen('inform_family')
+
+            Widget:
+                size_hint_x: None
+                width: dp(25)
+
+            MDLabel:
+                text: "For Self-Picking Purposes"
+                font_style: "H5"
+                halign: "left"
+                pos_hint: {"center_y": 0.5}
+                size_hint_y: None
+                height: dp(20)
+
+
+        MapView:
+            id: map_view
+            lat: 0  # Default latitude (will be updated dynamically)
+            lon: 0  # Default longitude (will be updated dynamically)
+            zoom: 12
+
+        Widget:
+            size_hint_x: None
+            height: dp(10)
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            padding: dp(10)
+            spacing: dp(5)
+            height: dp(50)
+            Widget:
+                size_hint_x: None
+                height: dp(40)
+            MDRaisedButton:
+                text: "Load Map"
+                size_hint: None, None
+                size: dp(250), dp(50)
+                pos_hint: {"center_x": 0.5}
+                on_release: app.load_map()
+            MDRaisedButton:
+                text: "Next"
+                size_hint: None, None
+                size: dp(250), dp(50)
+                pos_hint: {"center_x": 0.5}
+                on_release:
+                    app.switch_to_screen('last-step')

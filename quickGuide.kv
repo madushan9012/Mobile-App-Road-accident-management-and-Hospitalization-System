@@ -1,0 +1,177 @@
+MDScreen:
+    name: "quickGuide"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(10)
+        spacing: dp(10)
+
+        # Back Arrow and Title on the Same Row
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: dp(50)
+
+            # Back Button (left aligned)
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_y": 0.5}
+                on_release: app.switch_to_screen('home')
+
+            # Spacer to push the label to the center
+            Widget:
+                size_hint_x: None
+                width: dp(40)
+
+            # Title (centered)
+            MDLabel:
+                text: "Quick Guide"
+                font_style: "H5"
+                halign: "left"
+                size_hint_y: None
+                height: dp(50)
+
+        # MDCarousel for sliding between cards
+        MDCarousel:
+            direction: 'right'  # Defines sliding direction
+            loop: True  # To loop back after the last card
+
+            # Card 1
+            MDCard:
+                orientation: 'vertical'
+                size_hint: None, None
+                size: dp(350), dp(400)
+                padding: dp(15)
+                spacing: dp(10)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                FitImage:
+                    source: "assets/acc.step1.jpg"  # Replace with your image path
+                    size_hint_y: None
+                    height: dp(180)
+
+                MDLabel:
+                    text: "Step 1: Check Whether anyone needs Medical Treatments "
+                    theme_text_color: "Secondary"
+                    halign: "center"
+
+
+            # Card 2
+            MDCard:
+                orientation: 'vertical'
+                size_hint: None, None
+                size: dp(350), dp(400)
+                padding: dp(15)
+                spacing: dp(10)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                FitImage:
+                    source: "assets/acc.step2.jpg"  # Replace with your image path
+                    size_hint_y: None
+                    height: dp(220)
+
+                MDLabel:
+                    text: "Step 2: Calm Down.Stay Safe with Vehicle"
+                    theme_text_color: "Secondary"
+                    halign: "center"
+
+
+            # Card 3
+            MDCard:
+                orientation: 'vertical'
+                size_hint: None, None
+                size: dp(350), dp(400)
+                padding: dp(15)
+                spacing: dp(10)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                FitImage:
+                    source: "assets/acc.step3.jpg"  # Replace with your image path
+                    size_hint_y: None
+                    height: dp(180)
+
+                MDLabel:
+                    text: "Step 3: Take Photos of Any Damage. "
+                    theme_text_color: "Secondary"
+                    halign: "center"
+
+
+            # Card 4
+            MDCard:
+                orientation: 'vertical'
+                size_hint: None, None
+                size: dp(350), dp(400)
+                padding: dp(15)
+                spacing: dp(10)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                FitImage:
+                    source: "assets/acc.step4.jpg"  # Replace with your image path
+                    size_hint_y: None
+                    height: dp(220)
+
+                MDLabel:
+                    text: "Step 4: Exchange Personal Information with Other Party."
+                    theme_text_color: "Secondary"
+                    halign: "center"
+
+
+            # Card 5
+            MDCard:
+                orientation: 'vertical'
+                size_hint: None, None
+                size: dp(350), dp(400)
+                padding: dp(15)
+                spacing: dp(10)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                FitImage:
+                    source: "assets/acc.step5.jpg"  # Replace with your image path
+                    size_hint_y: None
+                    height: dp(220)
+
+
+                MDLabel:
+                    text: "Step 5: Call for Roadside Assistance."
+                    theme_text_color: "Secondary"
+                   # halign: "center"
+
+            # Card 6
+            MDCard:
+                orientation: 'vertical'
+                size_hint: None, None
+                size: dp(350), dp(400)
+                padding: dp(15)
+                spacing: dp(10)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                FitImage:
+                    source: "assets/acc.step6.jpg"  # Replace with your image path
+                    size_hint_y: None
+                    height: dp(180)
+
+                MDLabel:
+                    text: "Step 6: Inform to Police By App. "
+                    theme_text_color: "Secondary"
+                    halign: "center"
+
+
+            # Card 7
+            MDCard:
+                orientation: 'vertical'
+                size_hint: None, None
+                size: dp(400), dp(400)
+                padding: dp(15)
+                spacing: dp(10)
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                FitImage:
+                    source: "assets/acc.step7.jpg"  # Replace with your image path
+                    size_hint_y: None
+                    height: dp(180)
+
+                MDLabel:
+                    text: "Step 7: File an Insurance Claim. "
+                    theme_text_color: "Secondary"
+                    halign: "center"
+

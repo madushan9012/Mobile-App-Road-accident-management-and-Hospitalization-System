@@ -1,0 +1,134 @@
+MDScreen:
+    name: "login"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: [20, 50, 20, 20]  # Adjust padding as needed [left, top, right, bottom]
+        spacing: 10  # Control overall spacing between widgets
+
+        # Enlarged "RAHMS" with image to the right
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: 100  # Set height for this layout
+
+            MDLabel:
+                text: "RAHMS"
+                font_style: "H4"
+                halign: "left"
+
+            Image:
+                source: "assets/car4.jpg"
+                size_hint: None, None
+                size: 100, 100
+
+        MDLabel:
+            text: "Welcome Back"
+            bold: True
+            adaptive_height: True
+            halign: "left"
+
+        MDLabel:
+            text: "Let's help to save a human life"
+            halign: "left"
+            adaptive_height: True
+
+        # Spacer widget to add space between username and password fields
+        Widget:
+            size_hint_y: None
+            height: 10  # Adjust this value to increase/decrease the space
+
+        # User ID input field
+        MDTextField:
+            id: username_field
+            hint_text: "User ID"
+            mode: "rectangle"
+            icon_left: "account"
+            size_hint_x: 1.0
+            helper_text: "Enter a valid username"
+            helper_text_mode: "on_error"
+            required: True
+            radius: [10, 10, 10, 10]
+            pos_hint: {"center_x": 0.5}  # Center horizontally
+
+        # Spacer widget to add space between username and password fields
+        Widget:
+            size_hint_y: None
+            height: 10  # Adjust this value to increase/decrease the space
+
+        # Password field with eye icon inside the same BoxLayout
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: self.minimum_height
+
+            MDTextField:
+                id: password_field
+                hint_text: "Password"
+                password: True
+                mode: "rectangle"
+                helper_text: "Password must be at least 8 characters"
+                helper_text_mode: "on_error"
+                required: True
+                size_hint_x: 0.85  # Adjust width to leave space for icon
+                radius: [10, 10, 10, 10]
+
+            MDIconButton:
+                id: password_toggle
+                icon: "eye-off"
+                size_hint: None, None
+                size: 50, 50
+                pos_hint: {"center_y": 0.5}  # Align vertically with the text field
+                on_release: app.toggle_password_visibilitySignup()
+
+        # Spacer widget to add space between username and password fields
+        Widget:
+            size_hint_y: None
+            height: 10  # Adjust this value to increase/decrease the space
+
+        MDTextButton:
+            text: "Forgot Password?"
+            halign: "center"
+            text_color: [0, 0, 1, 1]  # Blue color for the text
+            size_hint_y: None
+            height: 30
+            on_release: app.handle_forgot_password()
+
+    # Add an icon button, if desired
+        MDIconButton:
+            icon: "email"
+            size_hint: None, None
+            size: 50, 50
+            pos_hint: {"center_x": 0.5}
+            on_release: app.handle_forgot_password()
+
+
+        # Buttons for Login and Sign Up
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 10  # Space between buttons
+
+            MDRaisedButton:
+                text: "Login"
+                size_hint_x: 0.9
+                height: 50
+                md_bg_color: 1, 0, 0, 1
+                pos_hint: {"center_x": 0.5}
+                on_release: app.validate_login()  # Ensure this method is called on button press
+
+            MDRaisedButton:
+                text: "Sign Up"
+                size_hint_x: 0.9
+                height: 50
+                md_bg_color: 1, 1, 1, 1
+                text_color: 1, 0, 0, 1
+                pos_hint: {"center_x": 0.5}
+                on_release: app.screen_manager.current = "adduser"
+
+        # Version text at the bottom
+        MDLabel:
+            text: "Version 1.0.0(100)"
+            halign: "center"
+            size_hint_y: None
+            height: 30
+

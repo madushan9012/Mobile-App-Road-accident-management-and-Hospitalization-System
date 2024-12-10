@@ -1,0 +1,102 @@
+MDScreen:
+    name: "inform_family"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(10)
+        spacing: dp(10)
+
+        # Back Arrow and Title on the Same Row
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: dp(40)
+
+            # Back Button (left aligned)
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_y": 0.5}
+                on_release: app.switch_to_screen('police_availability')
+
+            Widget:
+                size_hint_x: None
+                width: dp(25)
+
+            MDLabel:
+                text: "To Inform Guardians"
+                font_style: "H5"
+                halign: "left"
+                pos_hint: {"center_y": 0.5}
+                size_hint_y: None
+                height: dp(20)
+
+        Widget:
+            size_hint_x: None
+            height: dp(40)
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            padding: dp(10)
+            spacing: dp(5)
+            height: dp(100)
+            MDTextField:
+                hint_text: "Phone Number:+60 with 9 numbers"
+                size_hint_x: 0.8  # Adjust width as needed
+                height: dp(40)
+                id: number_field  # Give this text field an ID
+                pos_hint: {"center_y": 0.4}  # Center it vertically with respect to the label
+                on_text: app.validate_phone_number(self.text)
+
+            MDTextField:
+                hint_text: "Latitude"
+                size_hint_x: 0.8  # Adjust width as needed
+                height: dp(40)
+                id: latitude_field  # Give this text field an ID
+                pos_hint: {"center_y": 0.4}  # Center it vertically with respect to the label
+
+            MDTextField:
+                hint_text: "Longitude"
+                size_hint_x: 0.8  # Adjust width as needed
+                height: dp(40)
+                id: longitude_field  # Give this text field an ID
+                pos_hint: {"center_y": 0.4}  # Center it vertically with respect to the label
+
+        MDRaisedButton:
+            text: "Get"
+            size_hint: None, None
+            size: dp(100), dp(50)
+            pos_hint: {"center_x": 0.9}
+            on_release: app.get_location()
+
+        Widget:
+            size_hint_x: None
+            height: dp(100)
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            padding: dp(10)
+            spacing: dp(5)
+            height: dp(50)
+
+            Widget:
+                size_hint_x: None
+                height: dp(50)
+
+            MDRaisedButton:
+                text: "Call"
+                size_hint: None, None
+                size: dp(250), dp(50)
+                pos_hint: {"center_x": 0.5}
+                on_release: app.call_parents()
+
+            MDRaisedButton:
+                text: "Next"
+                size_hint: None, None
+                size: dp(250), dp(50)
+                pos_hint: {"center_x": 0.5}
+                on_release:
+                    #app.load_map()
+                    app.switch_to_screen('self_picking')
+                    #app.switch_to_screen('map_screen')

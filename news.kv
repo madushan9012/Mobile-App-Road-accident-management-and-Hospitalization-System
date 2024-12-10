@@ -1,0 +1,38 @@
+MDScreen:
+    name: "news"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(10)
+        spacing: dp(10)
+
+        # Top Bar with Back Arrow and Title
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: dp(50)
+
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_y": 0.5}
+                on_release: app.switch_to_screen('home')
+
+            Widget:
+                size_hint_x: None
+                width: dp(40)
+
+            MDLabel:
+                text: "Latest News"
+                font_style: "H5"
+                halign: "left"
+                size_hint_y: None
+                height: dp(50)
+
+        Carousel:
+            id: news_carousel  # ID to add news cards dynamically
+            direction: 'right'
+            loop: False
+
+        Widget:
+            size_hint_x: None
+            width: dp(50)

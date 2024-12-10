@@ -1,0 +1,50 @@
+MDScreen:
+    name: "near_police_stations"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(10)
+        spacing: dp(10)
+
+        # Back Arrow and Title on the Same Row
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: dp(40)
+
+            # Back Button (left aligned)
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_y": 0.5}
+                on_release: app.switch_to_screen('bed_availability')
+
+            Widget:
+                size_hint_x: None
+                width: dp(25)
+
+            MDLabel:
+                text: "NearBy Police Stations"
+                font_style: "H5"
+                halign: "left"
+                pos_hint: {"center_y": 0.5}
+                size_hint_y: None
+                height: dp(20)
+
+        # Box to hold the View Hospital list
+        MDBoxLayout:
+            orientation: "vertical"
+
+            MDTopAppBar:
+                title: 'Nearest Police Stations '
+                md_bg_color: app.theme_cls.primary_color
+
+            ScrollView:
+                MDList:
+                    id: station_list
+
+        #MDRaisedButton:
+            #text: "Next"
+            #size_hint: None, None
+            #size: dp(250), dp(50)
+            #pos_hint: {"center_x": 0.5}
+            #on_release: app.switch_to_screen('near_police_stations')

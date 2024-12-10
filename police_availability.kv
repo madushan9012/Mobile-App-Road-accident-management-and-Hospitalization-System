@@ -1,0 +1,91 @@
+MDScreen:
+    name: "police_availability"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(10)
+        spacing: dp(10)
+
+        # Back Arrow and Title on the Same Row
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: dp(40)
+
+            # Back Button (left aligned)
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_y": 0.5}
+                on_release: app.switch_to_screen('near_hospitals')
+
+            Widget:
+                size_hint_x: None
+                width: dp(25)
+
+            MDLabel:
+                text: "Police Station Details"
+                font_style: "H5"
+                halign: "left"
+                pos_hint: {"center_y": 0.5}
+                size_hint_y: None
+                height: dp(20)
+
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: dp(10)
+            padding: dp(10)
+            MDLabel:
+                id: station_name
+                text: "Police Station Name"
+                font_style: "H6"
+                halign: "center"
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: dp(10)
+                padding: dp(10)
+                MDLabel:
+                    id: lat
+                    text: "Latitude: "
+                    font_style: "Body1"
+                    halign: "left"
+
+                MDLabel:
+                    id: long
+                    text: "Longitude: "
+                    font_style: "Body1"
+                    halign: "left"
+
+                MDLabel:
+                    id: contact_no
+                    text: "Contact Details: "
+                    font_style: "Body1"
+                    halign: "left"
+        Widget:
+            size_hint_x: None
+            height: dp(150)
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: dp(50)
+            Widget:
+                size_hint_x: None
+                width: dp(50)
+
+            MDRaisedButton:
+                text: "Inform to Station"
+                size_hint: None, None
+                size: dp(250), dp(50)
+                pos_hint: {"center_x": 0.3}
+                on_release: app.inform_to_police_station()
+
+            Widget:
+                size_hint_x: None
+                width: dp(10)
+
+            MDRaisedButton:
+                text: "Next"
+                size_hint: None, None
+                size: dp(250), dp(50)
+                pos_hint: {"center_x": 0.9}
+                on_release: app.switch_to_screen('inform_family')

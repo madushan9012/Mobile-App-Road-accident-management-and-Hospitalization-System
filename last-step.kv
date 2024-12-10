@@ -1,0 +1,57 @@
+MDScreen:
+    name: "last-step"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(10)
+        spacing: dp(10)
+
+        # Back Arrow and Title on the Same Row
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: dp(40)
+
+            # Back Button (left aligned)
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_y": 0.5}
+                on_release: app.switch_to_screen('self_picking')
+
+            Widget:
+                size_hint_x: None
+                width: dp(50)
+
+            MDLabel:
+                text: "Last Step"
+                font_style: "H5"
+                halign: "left"
+                pos_hint: {"center_y": 0.5}
+                size_hint_y: None
+                height: dp(20)
+
+        # Card to display the message
+        MDCard:
+            size_hint: None, None
+            size: dp(300), dp(150)
+            pos_hint: {"center_x": 0.5}
+            elevation: 4
+            padding: dp(10)
+            orientation: "vertical"
+            md_bg_color: 1, 0.9, 0.85, 1  # Light coral color (RGBA)
+            MDLabel:
+                text: "Your Report has been recorded, Thank you for your effort to save a human life"
+                font_style: "Subtitle1"
+                halign: "center"
+                theme_text_color: "Primary"
+
+        Widget:
+            size_hint_x: None
+            height: dp(150)
+
+        MDRaisedButton:
+            text: "Exit"
+            size_hint: None, None
+            size: dp(250), dp(50)
+            pos_hint: {"center_x": 0.5}
+            on_release: app.close_app()

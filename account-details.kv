@@ -1,0 +1,127 @@
+MDScreen:
+    name: "account-details"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(10)
+        spacing: dp(10)
+
+        MDCard:
+            orientation: "vertical"
+            padding: dp(15)
+            size_hint: None, None
+            size: root.width - dp(20), root.height - dp(100)
+            pos_hint: {"center_x": 0.5, "center_y": 0.3}
+            md_bg_color: app.theme_cls.primary_light  # Set the background color
+
+            # Back Arrow and Title on the Same Row
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: dp(50)
+
+                MDIconButton:
+                    icon: "arrow-left"
+                    pos_hint: {"center_y": 0.5}
+                    on_release: app.switch_to_screen('home')
+
+                Widget:
+                    size_hint_x: None
+                    width: dp(30)
+
+                MDLabel:
+                    text: "Account Details"
+                    font_style: "H5"
+                    halign: "left"
+                    size_hint_y: None
+                    height: dp(50)
+
+            MDTextField:
+                id: username_field
+                hint_text: "Username"
+                text: app.user_data.get('username', '')
+                readonly: True
+
+            MDTextField:
+                id: full_name_field
+                hint_text: "Full Name"
+                text: app.user_data.get('full_name', '')
+                readonly: True
+
+            MDTextField:
+                id: email_field
+                hint_text: "Email"
+                text: app.user_data.get('email', '')
+                readonly: True
+
+            MDTextField:
+                id: password_field
+                hint_text: "Password"
+                password: True
+                text: app.user_data.get('plain_password', '')
+                readonly: True
+
+            MDTextField:
+                id: contact_field
+                hint_text: "Contact Number"
+                text: app.user_data.get('contact_number', '')
+                readonly: True
+
+            BoxLayout:
+                orientation: "horizontal"
+                spacing: dp(10)
+                size_hint_y: None
+                height: dp(50)
+                padding: dp(30)
+
+                Widget:
+                    size_hint_x: None
+                    width: dp(50)
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: None, None
+                    size: dp(50), dp(50)
+                    pos_hint: {"center_x": 0.3,"center_y": 0.2}
+                    canvas.before:
+                        Color:
+                            rgba: (1, 0, 0, 1)
+
+                        Ellipse:
+                            size: self.size
+                            pos: self.pos
+
+                    MDIconButton:
+                        id:accountEdit_icon
+                        icon: "account-edit"
+                        user_font_size: "25sp"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        md_bg_color: (1, 0, 0, 1)
+                        on_release: app.toggle_edit_mode()
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: None, None
+                    size: dp(50), dp(50)
+                    pos_hint: {"center_x": 0.8,"center_y": 0.2}
+                    canvas.before:
+                        Color:
+                            rgba: (1, 0, 0, 1)
+
+                        Ellipse:
+                            size: self.size
+                            pos: self.pos
+
+                    MDIconButton:
+                        id:accountSave_icon
+                        icon: "content-save"
+                        user_font_size: "25sp"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        md_bg_color: (1, 0, 0, 1)
+                        on_release: app.save_user_details()
+
+        Widget:
+            size_hint_x: None
+            width: dp(50)
+
+

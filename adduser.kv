@@ -1,0 +1,126 @@
+#:import MDTextField kivymd.uix.textfield.MDTextField
+#:import MDRaisedButton kivymd.uix.button.MDRaisedButton
+#:import MDIconButton kivymd.uix.button.MDIconButton
+
+MDScreen:
+    name: "adduser"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: [20, 30, 20, 20]  # Adjust the padding: [left, top, right, bottom]
+        spacing: 25  # Adjust spacing between widgets
+
+        MDLabel:
+            text: "Let's Create Your Account"
+            font_style: "H6"
+            halign: "center"
+            size_hint_y: None  # Remove vertical stretch
+            height: self.texture_size[1]  # Adjust to the text height
+
+        MDTextField:
+            id: full_name_field
+            hint_text: "Full Name"
+            mode: "rectangle"
+            icon_left: "account"
+            size_hint_x: 1.0
+            size_hint_y: None
+            height: 35  # Adjust the height to make it smaller
+            pos_hint: {"center_x": 0.5}
+            helper_text: "Enter your full name"
+            helper_text_mode: "on_error"
+            required: True
+            radius: [10, 10, 10, 10]  # Rounded corners
+
+        MDTextField:
+            id: email_field
+            hint_text: "Email Address"
+            mode: "rectangle"
+            icon_left: "email"
+            size_hint_x: 1.0
+            size_hint_y: None
+            height: 35  # Adjust the height to make it smaller
+            pos_hint: {"center_x": 0.5}
+            helper_text: "Enter a valid email address"
+            helper_text_mode: "on_error"
+            required: True
+            radius: [10, 10, 10, 10]  # Rounded corners
+            on_text: app.validate_email(self.text)
+
+        MDTextField:
+            id: contact_number_field
+            hint_text: "Telephone No"
+            mode: "rectangle"
+            icon_left: "phone-dial"
+            size_hint_x: 1.0
+            size_hint_y: None
+            height: 35  # Adjust the height to make it smaller
+            pos_hint: {"center_x": 0.5}
+            helper_text: "Enter your contact number"
+            helper_text_mode: "on_error"
+            required: True
+            radius: [10, 10, 10, 10]  # Rounded corners
+            on_text: app.validate_contact_number(self.text)
+
+        MDTextField:
+            id: new_username_field
+            hint_text: "New User ID"
+            mode: "rectangle"
+            icon_left: "account"
+            size_hint_x: 1.0
+            size_hint_y: None
+            height: 35  # Adjust the height to make it smaller
+            pos_hint: {"center_x": 0.5}
+            helper_text: "Enter a valid username"
+            helper_text_mode: "on_error"
+            required: True
+            radius: [10, 10, 10, 10]  # Rounded corners
+
+        # Password field with eye icon inside the same BoxLayout
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: self.minimum_height
+
+            MDTextField:
+                id: password_field
+                hint_text: "Password"
+                password: True
+                mode: "rectangle"
+                helper_text: "Password must be at least 8 characters"
+                helper_text_mode: "on_error"
+                required: True
+                size_hint_x: 0.85  # Adjust width to leave space for icon
+                size_hint_y: None
+                height: 35
+                radius: [10, 10, 10, 10]
+
+            MDIconButton:
+                id: password_toggle
+                icon: "eye-off"
+                size_hint: None, None
+                size: 50, 50
+                pos_hint: {"center_y": 0.5}  # Align vertically with the text field
+                on_release: app.toggle_password_visibilityAdduser()
+
+        # BoxLayout for the buttons with reduced spacing
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            spacing: 8  # Adjust the spacing between the buttons
+
+            MDRaisedButton:
+                text: "Register"
+                size_hint_x: 0.9
+                height: 60
+                md_bg_color: 1, 0, 0, 1
+                pos_hint: {"center_x": 0.5}
+                on_release: app.register_user()
+
+            MDRaisedButton:
+                text: "Back to Login"
+                size_hint_x: 0.9
+                height: 60
+                md_bg_color: 1, 1, 1, 1
+                text_color: 1, 0, 0, 1
+                pos_hint: {"center_x": 0.5}
+                on_release: app.screen_manager.current = "login"

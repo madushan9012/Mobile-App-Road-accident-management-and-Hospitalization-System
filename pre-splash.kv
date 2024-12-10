@@ -1,0 +1,62 @@
+MDScreen:
+    name: "pre-splash"
+    MDFloatLayout:
+        md_bg_color: 49/255, 240/255, 136/255, 1
+
+        # Circular image container using canvas
+        Image:
+            source: "assets/acc4.jpg"
+            size_hint: None, None  # Disable size_hint to use specific size
+            size: 250, 250  # Force the size to be a square (circle)
+            pos_hint: {"center_x": .5, "center_y": .55}
+            #allow_stretch: True
+            #keep_ratio: True  # Keep the image aspect ratio
+
+            # Use canvas.before to draw a circular mask
+            canvas.before:
+                PushMatrix
+                StencilPush
+
+                Ellipse:
+                    size: self.size  # Ensure the size of the ellipse is circular
+                    pos: self.pos
+
+                StencilUse
+
+            canvas.after:
+                StencilUnUse
+                StencilPop
+                PopMatrix
+
+    # Add the text below the image
+
+    MDLabel:
+        text: "Let's Help to save a Human Life!.."
+        halign: "center"
+        pos_hint: {"center_x": .5, "center_y": .30}
+        #font_style: "H6"  # You can change the font size or style
+        theme_text_color: "Custom"
+        text_color: 1, 1, 1, 1  # White color
+
+    MDLabel:
+        text: "RAHMS"
+        halign: "center"
+        pos_hint: {"center_x": .5, "center_y": .10}
+        #font_style: "H6"  # You can change the font size or style
+        theme_text_color: "Custom"
+        text_color: 1, 1, 1, 1  # White color
+
+    MDLabel:
+        text: "Version 1.0.0(100)"
+        halign: "center"
+        pos_hint: {"center_x": .5, "center_y": .05}
+        #font_style: "Button"  #subtitle is smallest, You can change the font size or style
+        theme_text_color: "Custom"
+        text_color: 1, 1, 1, 1  # White color
+
+# Add a progress bar below the texts
+    MDProgressBar:
+        id:progress_bar
+        value: 0  # Initial value (0 to 100)
+        pos_hint: {"center_x": .5, "center_y": .20}
+        size_hint_x: 0.8  # Adjust width
